@@ -1,0 +1,21 @@
+<h1>Current City is {{city}}</h1>
+
+<ul>
+  <div *ngFor = "let customer of customers" (click) = "selectCustomer(customer)">
+    <li *ngIf = "customer.age>22">
+      <strong> {{ customer.firstName }} {{ customer.lastName }} </strong>
+    </li>
+  </div>
+</ul>
+
+<!--Eğer ki selectedCustomer defined edilmiş ise yani tanımlanmışsa ngIf şartından geçip 
+müşteri seçimini ekrana yazdır. Bu yüzden ilk etapta bir şey 
+seçili olmadığından strong kodu çalışmaz-->
+
+<strong *ngIf = "selectedCustomer; else elseBlock ">
+  {{ selectedCustomer.lastName }} seçtiniz
+</strong>
+
+<ng-template #elseBlock> 
+    Bir şey seçilmedi
+</ng-template>
